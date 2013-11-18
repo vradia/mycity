@@ -1,5 +1,0 @@
-# MyCity
-
-This is a prototype for the MyCity web app.
-
-by [Vikash Radia]
