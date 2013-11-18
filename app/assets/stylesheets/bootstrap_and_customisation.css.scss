@@ -1,0 +1,20 @@
+@import url(http://fonts.googleapis.com/css?family=Crete+Round);
+
+$body-bg: #2980b9;
+$font-family: 'Crete Round', serif, sans-serif;
+$navbar-default-bg: #ecf0f1;
+$navbar-default-brand-color: #d35400;
+$navbar-default-link-color: black;
+$jumbotron-bg: #ecf0f1;
+$btn-primary-bg: #d35400;
+$navbar-default-link-hover-color: #d35400;
+$navbar-default-link-active-color: #d35400;
+@import 'bootstrap';
+
+.center {
+	text-align: center;
+}
+
+.navbar-brand {
+	font-weight: bold;
+}
