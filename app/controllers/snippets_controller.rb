@@ -1,6 +1,7 @@
 class SnippetsController < ApplicationController
   before_action :set_snippet, only: [:show, :edit, :update, :destroy]
-
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   # GET /snippets
   # GET /snippets.json
   def index
@@ -14,7 +15,7 @@ class SnippetsController < ApplicationController
 
   # GET /snippets/new
   def new
-    @snippet = Snippet.new
+    @snippet = current_user.snippets.build
   end
 
   # GET /snippets/1/edit
@@ -24,7 +25,7 @@ class SnippetsController < ApplicationController
   # POST /snippets
   # POST /snippets.json
   def create
-    @snippet = Snippet.new(snippet_params)
+    @snippet = current_user.snippets.build(snippet_params)
 
     respond_to do |format|
       if @snippet.save
@@ -66,6 +67,11 @@ class SnippetsController < ApplicationController
     def set_snippet
       @snippet = Snippet.find(params[:id])
     end
+
+    def correct_user
+      @snippet = current_user.snippets.find_by(id: params[:id])
+      redirect_to snippets_path, notice: "You do not have permission to edit this snippet" if @snippet.nil?
+    end  
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def snippet_params
