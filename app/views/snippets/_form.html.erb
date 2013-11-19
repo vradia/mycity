@@ -1,4 +1,4 @@
-<%= form_for(@snippet) do |f| %>
+<%= form_for @snippet, html: { multipart: true } do |f| %>
   <% if @snippet.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@snippet.errors.count, "error") %> prohibited this snippet from being saved:</h2>
@@ -10,10 +10,14 @@
       </ul>
     </div>
   <% end %>
-
+ 
   <div class="form-group">
     <%= f.label :description %><br>
     <%= f.text_field :description, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %><br>
+    <%= f.file_field :image, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.submit class: "btn btn-primary" %>

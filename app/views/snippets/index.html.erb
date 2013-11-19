@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Description</th>
+      <th>Image</th>
       <th>User</th>
       <th></th>
       <th></th>
@@ -15,6 +16,7 @@
     <% @snippets.each do |snippet| %>
       <tr>
         <td><%= snippet.description %></td>
+        <td><%= image_tag snippet.image.url(:medium) %></td>
         <td><%= snippet.user.email %></td>
         <td><%= link_to 'Show', snippet %></td>
         <% if snippet.user == current_user %>
