@@ -17,7 +17,7 @@
       <tr>
         <td><%= snippet.description %></td>
         <td><%= image_tag snippet.image.url(:medium) %></td>
-        <td><%= snippet.user.email %></td>
+        <td><%= snippet.user.email if snippet.user %></td>
         <td><%= link_to 'Show', snippet %></td>
         <% if snippet.user == current_user %>
         <td><%= link_to 'Edit', edit_snippet_path(snippet) %></td>
