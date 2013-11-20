@@ -2,7 +2,7 @@ Mycity::Application.routes.draw do
   resources :snippets
 
   devise_for :users
-  root "pages#home"
+  root "snippets#index"
   get "about" => "pages#about"
   get "contact" => "pages#contact"
 

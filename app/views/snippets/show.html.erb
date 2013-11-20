@@ -1,11 +1,22 @@
-<%= image_tag @snippet.image.url(:medium) %>
-
-<p>
-  <strong>Description:</strong>
-  <%= @snippet.description %>
-</p>
-
-<% if @snippet.user == current_user %>
-	<%= link_to 'Edit', edit_snippet_path(@snippet) %> |
-<% end %>
 <%= link_to 'Back', snippets_path %>
+
+<div class="row">
+  <div class="col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading center">
+        <%= image_tag @snippet.image.url(:medium) %>
+      </div>
+      <div class="panel-body">
+        <p><%= @snippet.description %></p>
+        <p><strong><%= @snippet.user.email if @snippet.user %></strong></p>
+
+        <% if @snippet.user == current_user %>
+         <%= link_to edit_snippet_path(@snippet) do %>
+              <span class="glyphicon glyphicon-edit"></span>
+              Edit
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

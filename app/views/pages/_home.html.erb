@@ -2,12 +2,10 @@
 	<div class= "jumbotron center">
 		<h1>It's your city.</h1>
 		<h2>Show it off to the world.</h2>
-		<% if user_signed_in? %>
-			# do something
-		<% else %>	
+		
 			<p>
 				<%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
 				<%= link_to "Log In", new_user_session_path, class: "btn btn-default btn-lg" %>
 			</p>
-		<% end %>	
+		
 	</div>

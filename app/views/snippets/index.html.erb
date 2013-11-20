@@ -1,15 +1,24 @@
+<%= render 'pages/home' unless user_signed_in? %>
+
 <div id="snippets" class="transitions-enabled">
     <% @snippets.each do |snippet| %>
       <div class="box panel panel-default">
-        <%= image_tag snippet.image.url(:medium) %>
+        <%= link_to image_tag(snippet.image.url(:medium)), snippet %>
        <div class="panel-body"> 
-        <%= snippet.description %>
-        <%= snippet.user.email if snippet.user %>
-        <%= link_to 'Show', snippet %>
+        <%= snippet.description %><br>
+        <strong><%= snippet.user.email if snippet.user %></strong>
         <% if snippet.user == current_user %>
-        <%= link_to 'Edit', edit_snippet_path(snippet) %>
-        <%= link_to 'Delete', snippet, method: :delete, data: { confirm: 'Are you sure want to delete this snippet?' } %>
+          <div class="actions">
+          <%= link_to edit_snippet_path(snippet) do %>
+              <span class="glyphicon glyphicon-edit"></span>
+              Edit
+            <% end %>
+            <%= link_to snippet, method: :delete, data: { confirm: 'Are you sure you want to delete this snippet?' } do %>
+              <span class="glyphicon glyphicon-trash"></span>
+              Delete
+            <% end %>
         <% end %>
+        </div>
        </div> 
       </div>
     <% end %>
