@@ -8,7 +8,7 @@
       </div>
       <div class="panel-body">
         <p><%= @snippet.description %></p>
-        <p><strong><%= @snippet.user.email if @snippet.user %></strong></p>
+        <p><strong><%= @snippet.user.name if @snippet.user %></strong></p>
 
         <% if @snippet.user == current_user %>
          <%= link_to edit_snippet_path(@snippet) do %>

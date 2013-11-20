@@ -6,7 +6,7 @@
         <%= link_to image_tag(snippet.image.url(:medium)), snippet %>
        <div class="panel-body"> 
         <%= snippet.description %><br>
-        <strong><%= snippet.user.email if snippet.user %></strong>
+        <strong><%= snippet.user.name if snippet.user %></strong>
         <% if snippet.user == current_user %>
           <div class="actions">
           <%= link_to edit_snippet_path(snippet) do %>
@@ -25,5 +25,5 @@
 </div>
 
 <div class="center">
-<%= will_paginate @posts renderer: BootstrapPagination::Rails%>
+<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 </div>
