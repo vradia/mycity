@@ -1,35 +1,17 @@
-<h1>Snippets</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Image</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div id="snippets" class="transitions-enabled">
     <% @snippets.each do |snippet| %>
-      <tr>
-        <td><%= snippet.description %></td>
-        <td><%= image_tag snippet.image.url(:medium) %></td>
-        <td><%= snippet.user.email if snippet.user %></td>
-        <td><%= link_to 'Show', snippet %></td>
+      <div class="box panel panel-default">
+        <%= image_tag snippet.image.url(:medium) %>
+       <div class="panel-body"> 
+        <%= snippet.description %>
+        <%= snippet.user.email if snippet.user %>
+        <%= link_to 'Show', snippet %>
         <% if snippet.user == current_user %>
-        <td><%= link_to 'Edit', edit_snippet_path(snippet) %></td>
-        <td><%= link_to 'Delete', snippet, method: :delete, data: { confirm: 'Are you sure want to delete this snippet?' } %></td>
+        <%= link_to 'Edit', edit_snippet_path(snippet) %>
+        <%= link_to 'Delete', snippet, method: :delete, data: { confirm: 'Are you sure want to delete this snippet?' } %>
         <% end %>
-      </tr>
+       </div> 
+      </div>
     <% end %>
-  </tbody>
-</table>
+</div>
 
-<br>
-
-<% if user_signed_in? %>
-  <%= link_to 'New Snippet', new_snippet_path %>
-<% end %>  
